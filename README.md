@@ -1,1 +1,1 @@
-# js-clock
+https://kriforce.github.io/js-clock/
