@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Clock</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div class="row row2">
+            <div class="clock">
+                <div class="hour">
+                    <div class="hr2" id="hr2"></div>
+                </div>
+
+                <div class="min">
+                    <div class="mn2" id="mn2"></div>
+                </div>
+
+                <div class="sec">
+                    <div class="sc2" id="sc2"></div>
+                </div>
+            </div>
+            <h1>Berlin</h1>
+            <h2 id="time2"></h2>
+        </div>
+
+        <div class="row row1">
+            <div class="clock">
+                <div class="hour">
+                    <div class="hr" id="hr"></div>
+                </div>
+
+                <div class="min">
+                    <div class="mn" id="mn"></div>
+                </div>
+
+                <div class="sec">
+                    <div class="sc" id="sc"></div>
+                </div>
+            </div>
+            <h1>Local time</h1>
+            <h2 id="time"></h2>
+        </div>
+
+        <div class="row row3">
+            <div class="clock">
+                <div class="hour">
+                    <div class="hr3" id="hr3"></div>
+                </div>
+
+                <div class="min">
+                    <div class="mn3" id="mn3"></div>
+                </div>
+
+                <div class="sec">
+                    <div class="sc3" id="sc3"></div>
+                </div>
+            </div>
+            <h1>London</h1>
+            <h2 id="time3"></h2>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        // Function of Berlin time
+
+        const deg2 = 6;
+        const hr2 = document.querySelector('#hr2');
+        const mn2 = document.querySelector('#mn2');
+        const sc2 = document.querySelector('#sc2');
+
+        setInterval(() => {
+            let day2 = new Date();
+            let hh = day2.getUTCHours() * 30 + 30;
+            let mm = day2.getMinutes() * deg;
+            let ss = day2.getSeconds() * deg;
+
+            hr2.style.transform = `rotateZ(${(hh)+(mm / 12)}deg)`;
+            mn2.style.transform = `rotateZ(${mm}deg)`;
+            sc2.style.transform = `rotateZ(${ss}deg)`;
+        })
+    </script>
+
+    <script type="text/javascript">
+        // Time recording function as a string(Berlin time)
+        function clock() {
+            var date = new Date(),
+                years = (date.getFullYear()),
+                weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+                week = (weekday[date.getDay()]),
+                day = (date.getDate()),
+                months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+                month = (months[date.getMonth()]),
+                hours = ((date.getUTCHours() + 1) < 10) ? '0' + (date.getUTCHours() + 1) : (date.getUTCHours() + 1),
+                minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes(),
+                seconds = (date.getSeconds() < 10) ? '0' + date.getSeconds() : date.getSeconds();
+            document.getElementById('time2').innerHTML = hours + ':' + minutes + ':' + seconds + " " + week + ", " + month + " " + day + ", " + years;
+        }
+
+        setInterval(clock, 1);
+        clock();
+    </script>
+
+
+
+    <script type="text/javascript">
+        // Function of Local time
+        const deg = 6;
+        const hr = document.querySelector('#hr');
+        const mn = document.querySelector('#mn');
+        const sc = document.querySelector('#sc');
+
+        setInterval(() => {
+            let day = new Date();
+            let hh = day.getHours() * 30;
+            let mm = day.getMinutes() * deg;
+            let ss = day.getSeconds() * deg;
+
+            hr.style.transform = `rotateZ(${(hh)+(mm / 12)}deg)`;
+            mn.style.transform = `rotateZ(${mm}deg)`;
+            sc.style.transform = `rotateZ(${ss}deg)`;
+        })
+    </script>
+
+    <script type="text/javascript">
+        // Time recording function as a string(Local time)
+        function clock() {
+            var date = new Date(),
+                years = (date.getFullYear()),
+                weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+                week = (weekday[date.getDay()]),
+                day = (date.getDate()),
+                months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+                month = (months[date.getMonth()]),
+                hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours(),
+                minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes(),
+                seconds = (date.getSeconds() < 10) ? '0' + date.getSeconds() : date.getSeconds();
+            document.getElementById('time').innerHTML = hours + ':' + minutes + ':' + seconds + " " + week + ", " + month + " " + day + ", " + years;
+        }
+
+        setInterval(clock, 1);
+        clock();
+    </script>
+
+    <script type="text/javascript">
+        // Function of London time
+        const deg3 = 6;
+        const hr3 = document.querySelector('#hr3');
+        const mn3 = document.querySelector('#mn3');
+        const sc3 = document.querySelector('#sc3');
+
+        setInterval(() => {
+            let day3 = new Date();
+            let hh = day3.getUTCHours() * 30;
+            let mm = day3.getUTCMinutes() * deg;
+            let ss = day3.getUTCSeconds() * deg;
+
+            hr3.style.transform = `rotateZ(${(hh)+(mm / 12)}deg)`;
+            mn3.style.transform = `rotateZ(${mm}deg)`;
+            sc3.style.transform = `rotateZ(${ss}deg)`;
+        })
+    </script>
+
+    <script type="text/javascript">
+        // Time recording function as a string(London time)
+        function clock() {
+            var date = new Date(),
+                years = (date.getFullYear()),
+                weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+                week = (weekday[date.getDay()]),
+                day = (date.getDate()),
+                months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+                month = (months[date.getMonth()]),
+                hours = (date.getUTCHours() < 10) ? '0' + date.getUTCHours() : date.getUTCHours(),
+                minutes = (date.getUTCMinutes() < 10) ? '0' + date.getUTCMinutes() : date.getUTCMinutes(),
+                seconds = (date.getUTCSeconds() < 10) ? '0' + date.getUTCSeconds() : date.getUTCSeconds();
+            document.getElementById('time3').innerHTML = hours + ':' + minutes + ':' + seconds + " " + week + ", " + month + " " + day + ", " + years;
+        }
+
+        setInterval(clock, 1);
+        clock();
+    </script>
+
+
+
+</body>
+
+</html>
